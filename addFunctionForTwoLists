@@ -1,0 +1,30 @@
+// Adds the two numbers and return the sum as a linked list.
+
+ListNode add(ListNode s, ListNode t){
+        
+        int sum = 0, carry = 0;
+        
+        ListNode temp = new ListNode(0);
+        ListNode ans = temp;
+        
+        while(s != null || t != null || carry != 0){
+            
+            sum = 0;
+            
+            if(s != null){
+                sum += s.val; s = s.next;
+            }
+            
+            if(t != null){
+                sum += t.val; t = t.next;
+            }
+            
+            sum += carry;
+            carry = sum / 10;
+            
+            ListNode x = new ListNode(sum%10);
+            temp.next = x;
+            temp = temp.next;
+        }
+        return ans.next;
+    }
